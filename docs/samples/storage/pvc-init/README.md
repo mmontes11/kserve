@@ -104,9 +104,15 @@ Adjust the storage request based on your model size. For reference:
 
 The job includes environment variables for optimized HuggingFace downloads:
 
-- `HF_XET_NUM_CONCURRENT_RANGE_GETS=8`: Parallel downloads
-- `HF_XET_HIGH_PERFORMANCE=True`: High-performance mode
+- `HF_XET_HIGH_PERFORMANCE=1`: High-performance mode. Saturates the network and
+  CPU and sizes the download buffers for maximum throughput. With hf-xet 1.5.x
+  those buffers are static and can reach 16Gi, so give the pod a matching
+  memory limit before enabling it
 - `HF_HUB_DISABLE_TELEMETRY=1`: Disable telemetry
+
+`HF_XET_NUM_CONCURRENT_RANGE_GETS` is set for compatibility with older hf-xet
+releases; since hf-xet 1.3.0 download concurrency is adaptive and the variable
+has no effect.
 
 Adjust these based on your network bandwidth and storage performance.
 
@@ -130,7 +136,8 @@ If the job fails with out-of-space errors, increase the PVC size in `pvc.yaml` a
 
 ### Slow Downloads
 
-- Increase `HF_XET_NUM_CONCURRENT_RANGE_GETS` for faster parallel downloads
+- Set `HF_XET_HIGH_PERFORMANCE=1` for faster downloads (and give the job a
+  memory limit large enough for its download buffers)
 - Ensure adequate network bandwidth between cluster and HuggingFace
 - Check resource limits on the job pod
 

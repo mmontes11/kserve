@@ -268,19 +268,21 @@ func GetVolumeNameFromPath(path string) string {
 // AddDefaultHuggingFaceEnvVars adds default HuggingFace optimization environment variables
 // to the container if they are not already present. This prevents conflicts when merging
 // container specs where users may have defined these variables with different configurations.
+//
+// Only HF_HUB_ENABLE_HF_TRANSFER is set by default: hf_transfer is a memory-bounded
+// fast path. The other throughput knobs are deliberately not forced on:
+// HF_XET_HIGH_PERFORMANCE makes hf_xet saturate the network and CPU, and the hf_xet
+// shipped in the storage-initializer image (1.5.x) sizes its download buffers
+// statically in high-performance mode (16Gi buffer, 124 concurrent downloads, 64Gi
+// hard cap), which OOMKills the init container under the default 1Gi memoryLimit.
+// HF_XET_NUM_CONCURRENT_RANGE_GETS has had no effect since hf_xet 1.3.0.
+// Initializers that run with a large memory limit can opt in by setting these
+// variables themselves; the merge in AddEnvVars preserves user-defined values.
 func AddDefaultHuggingFaceEnvVars(container *corev1.Container) {
 	defaultHFEnvVars := []corev1.EnvVar{
 		{
 			Name:  "HF_HUB_ENABLE_HF_TRANSFER",
 			Value: "1",
-		},
-		{
-			Name:  "HF_XET_HIGH_PERFORMANCE",
-			Value: "1",
-		},
-		{
-			Name:  "HF_XET_NUM_CONCURRENT_RANGE_GETS",
-			Value: "8",
 		},
 	}
 

@@ -186,8 +186,6 @@ func TestStorageInitializerInjector(t *testing.T) {
 							Resources: resourceRequirement,
 							Env: []corev1.EnvVar{
 								{Name: "HF_HUB_ENABLE_HF_TRANSFER", Value: "1"},
-								{Name: "HF_XET_HIGH_PERFORMANCE", Value: "1"},
-								{Name: "HF_XET_NUM_CONCURRENT_RANGE_GETS", Value: "8"},
 							},
 							TerminationMessagePolicy: "FallbackToLogsOnError",
 							VolumeMounts: []corev1.VolumeMount{
@@ -252,8 +250,6 @@ func TestStorageInitializerInjector(t *testing.T) {
 							Resources: resourceRequirement,
 							Env: []corev1.EnvVar{
 								{Name: "HF_HUB_ENABLE_HF_TRANSFER", Value: "1"},
-								{Name: "HF_XET_HIGH_PERFORMANCE", Value: "1"},
-								{Name: "HF_XET_NUM_CONCURRENT_RANGE_GETS", Value: "8"},
 							},
 							TerminationMessagePolicy: "FallbackToLogsOnError",
 							VolumeMounts: []corev1.VolumeMount{
@@ -319,8 +315,6 @@ func TestStorageInitializerInjector(t *testing.T) {
 							Resources: resourceRequirement,
 							Env: []corev1.EnvVar{
 								{Name: "HF_HUB_ENABLE_HF_TRANSFER", Value: "1"},
-								{Name: "HF_XET_HIGH_PERFORMANCE", Value: "1"},
-								{Name: "HF_XET_NUM_CONCURRENT_RANGE_GETS", Value: "8"},
 							},
 							TerminationMessagePolicy: "FallbackToLogsOnError",
 							VolumeMounts: []corev1.VolumeMount{
@@ -386,8 +380,6 @@ func TestStorageInitializerInjector(t *testing.T) {
 							Resources: resourceRequirement,
 							Env: []corev1.EnvVar{
 								{Name: "HF_HUB_ENABLE_HF_TRANSFER", Value: "1"},
-								{Name: "HF_XET_HIGH_PERFORMANCE", Value: "1"},
-								{Name: "HF_XET_NUM_CONCURRENT_RANGE_GETS", Value: "8"},
 							},
 							TerminationMessagePolicy: "FallbackToLogsOnError",
 							VolumeMounts: []corev1.VolumeMount{
@@ -509,8 +501,6 @@ func TestStorageInitializerInjector(t *testing.T) {
 									Value: `{"bucket":"my-bucket","type":"s3"}`,
 								},
 								{Name: "HF_HUB_ENABLE_HF_TRANSFER", Value: "1"},
-								{Name: "HF_XET_HIGH_PERFORMANCE", Value: "1"},
-								{Name: "HF_XET_NUM_CONCURRENT_RANGE_GETS", Value: "8"},
 							},
 							Resources:                resourceRequirement,
 							TerminationMessagePolicy: "FallbackToLogsOnError",
@@ -1476,8 +1466,6 @@ func TestCredentialInjection(t *testing.T) {
 									Value: "https://s3.aws.com",
 								},
 								{Name: "HF_HUB_ENABLE_HF_TRANSFER", Value: "1"},
-								{Name: "HF_XET_HIGH_PERFORMANCE", Value: "1"},
-								{Name: "HF_XET_NUM_CONCURRENT_RANGE_GETS", Value: "8"},
 							},
 						},
 					},
@@ -1558,8 +1546,6 @@ func TestCredentialInjection(t *testing.T) {
 									Value: gcs.GCSCredentialVolumeMountPath + "gcloud-application-credentials.json",
 								},
 								{Name: "HF_HUB_ENABLE_HF_TRANSFER", Value: "1"},
-								{Name: "HF_XET_HIGH_PERFORMANCE", Value: "1"},
-								{Name: "HF_XET_NUM_CONCURRENT_RANGE_GETS", Value: "8"},
 							},
 						},
 					},
@@ -1658,8 +1644,6 @@ func TestCredentialInjection(t *testing.T) {
 									Value: `{"some-param":"some-val"}`,
 								},
 								{Name: "HF_HUB_ENABLE_HF_TRANSFER", Value: "1"},
-								{Name: "HF_XET_HIGH_PERFORMANCE", Value: "1"},
-								{Name: "HF_XET_NUM_CONCURRENT_RANGE_GETS", Value: "8"},
 							},
 							Resources:                resourceRequirement,
 							TerminationMessagePolicy: "FallbackToLogsOnError",
@@ -1756,8 +1740,6 @@ func TestCredentialInjection(t *testing.T) {
 									Value: `{"some-param":"some-val"}`,
 								},
 								{Name: "HF_HUB_ENABLE_HF_TRANSFER", Value: "1"},
-								{Name: "HF_XET_HIGH_PERFORMANCE", Value: "1"},
-								{Name: "HF_XET_NUM_CONCURRENT_RANGE_GETS", Value: "8"},
 							},
 							Resources:                resourceRequirement,
 							TerminationMessagePolicy: "FallbackToLogsOnError",
@@ -1863,8 +1845,6 @@ func TestStorageInitializerConfigmap(t *testing.T) {
 							Resources: resourceRequirement,
 							Env: []corev1.EnvVar{
 								{Name: "HF_HUB_ENABLE_HF_TRANSFER", Value: "1"},
-								{Name: "HF_XET_HIGH_PERFORMANCE", Value: "1"},
-								{Name: "HF_XET_NUM_CONCURRENT_RANGE_GETS", Value: "8"},
 							},
 							TerminationMessagePolicy: "FallbackToLogsOnError",
 							VolumeMounts: []corev1.VolumeMount{
@@ -2232,8 +2212,6 @@ func TestCaBundleConfigMapVolumeMountInStorageInitializer(t *testing.T) {
 									},
 								},
 								{Name: "HF_HUB_ENABLE_HF_TRANSFER", Value: "1"},
-								{Name: "HF_XET_HIGH_PERFORMANCE", Value: "1"},
-								{Name: "HF_XET_NUM_CONCURRENT_RANGE_GETS", Value: "8"},
 							},
 							Resources:                resourceRequirement,
 							TerminationMessagePolicy: "FallbackToLogsOnError",
@@ -2338,8 +2316,6 @@ func TestCaBundleConfigMapVolumeMountInStorageInitializer(t *testing.T) {
 								{Name: "CA_BUNDLE_CONFIGMAP_NAME", Value: constants.DefaultGlobalCaBundleConfigMapName},
 								{Name: "CA_BUNDLE_VOLUME_MOUNT_POINT", Value: "/etc/ssl/custom-certs"},
 								{Name: "HF_HUB_ENABLE_HF_TRANSFER", Value: "1"},
-								{Name: "HF_XET_HIGH_PERFORMANCE", Value: "1"},
-								{Name: "HF_XET_NUM_CONCURRENT_RANGE_GETS", Value: "8"},
 							},
 							Resources:                resourceRequirement,
 							TerminationMessagePolicy: "FallbackToLogsOnError",
@@ -2462,8 +2438,6 @@ func TestCaBundleConfigMapVolumeMountInStorageInitializer(t *testing.T) {
 								{Name: "CA_BUNDLE_CONFIGMAP_NAME", Value: "cabundle-annotation"},
 								{Name: "CA_BUNDLE_VOLUME_MOUNT_POINT", Value: "/etc/ssl/custom-certs"},
 								{Name: "HF_HUB_ENABLE_HF_TRANSFER", Value: "1"},
-								{Name: "HF_XET_HIGH_PERFORMANCE", Value: "1"},
-								{Name: "HF_XET_NUM_CONCURRENT_RANGE_GETS", Value: "8"},
 							},
 							Resources:                resourceRequirement,
 							TerminationMessagePolicy: "FallbackToLogsOnError",
@@ -2587,8 +2561,6 @@ func TestCaBundleConfigMapVolumeMountInStorageInitializer(t *testing.T) {
 								{Name: "CA_BUNDLE_CONFIGMAP_NAME", Value: "cabundle-annotation"},
 								{Name: "CA_BUNDLE_VOLUME_MOUNT_POINT", Value: "/etc/ssl/custom-certs"},
 								{Name: "HF_HUB_ENABLE_HF_TRANSFER", Value: "1"},
-								{Name: "HF_XET_HIGH_PERFORMANCE", Value: "1"},
-								{Name: "HF_XET_NUM_CONCURRENT_RANGE_GETS", Value: "8"},
 							},
 							Resources:                resourceRequirement,
 							TerminationMessagePolicy: "FallbackToLogsOnError",
@@ -2703,8 +2675,6 @@ func TestCaBundleConfigMapVolumeMountInStorageInitializer(t *testing.T) {
 								},
 								{Name: "AWS_CA_BUNDLE", Value: "/path/to/ca.crt"},
 								{Name: "HF_HUB_ENABLE_HF_TRANSFER", Value: "1"},
-								{Name: "HF_XET_HIGH_PERFORMANCE", Value: "1"},
-								{Name: "HF_XET_NUM_CONCURRENT_RANGE_GETS", Value: "8"},
 							},
 							Resources:                resourceRequirement,
 							TerminationMessagePolicy: "FallbackToLogsOnError",
@@ -2814,8 +2784,6 @@ func TestCaBundleConfigMapVolumeMountInStorageInitializer(t *testing.T) {
 								{Name: "CA_BUNDLE_CONFIGMAP_NAME", Value: constants.DefaultGlobalCaBundleConfigMapName},
 								{Name: "CA_BUNDLE_VOLUME_MOUNT_POINT", Value: "/annotation/path/to"},
 								{Name: "HF_HUB_ENABLE_HF_TRANSFER", Value: "1"},
-								{Name: "HF_XET_HIGH_PERFORMANCE", Value: "1"},
-								{Name: "HF_XET_NUM_CONCURRENT_RANGE_GETS", Value: "8"},
 							},
 							Resources:                resourceRequirement,
 							TerminationMessagePolicy: "FallbackToLogsOnError",
@@ -3692,8 +3660,6 @@ func TestStorageContainerCRDInjection(t *testing.T) {
 							Env: []corev1.EnvVar{
 								{Name: "name", Value: "value"},
 								{Name: "HF_HUB_ENABLE_HF_TRANSFER", Value: "1"},
-								{Name: "HF_XET_HIGH_PERFORMANCE", Value: "1"},
-								{Name: "HF_XET_NUM_CONCURRENT_RANGE_GETS", Value: "8"},
 							},
 						},
 					},
@@ -3750,8 +3716,6 @@ func TestStorageContainerCRDInjection(t *testing.T) {
 							Resources: resourceRequirement, // from configMap instead of the CR
 							Env: []corev1.EnvVar{
 								{Name: "HF_HUB_ENABLE_HF_TRANSFER", Value: "1"},
-								{Name: "HF_XET_HIGH_PERFORMANCE", Value: "1"},
-								{Name: "HF_XET_NUM_CONCURRENT_RANGE_GETS", Value: "8"},
 							},
 							TerminationMessagePolicy: "FallbackToLogsOnError",
 							VolumeMounts: []corev1.VolumeMount{
@@ -4190,8 +4154,6 @@ func TestStorageInitializerUIDForIstioCNI(t *testing.T) {
 							Resources: resourceRequirement,
 							Env: []corev1.EnvVar{
 								{Name: "HF_HUB_ENABLE_HF_TRANSFER", Value: "1"},
-								{Name: "HF_XET_HIGH_PERFORMANCE", Value: "1"},
-								{Name: "HF_XET_NUM_CONCURRENT_RANGE_GETS", Value: "8"},
 							},
 							TerminationMessagePolicy: "FallbackToLogsOnError",
 							VolumeMounts: []corev1.VolumeMount{
@@ -4267,8 +4229,6 @@ func TestStorageInitializerUIDForIstioCNI(t *testing.T) {
 							TerminationMessagePolicy: "FallbackToLogsOnError",
 							Env: []corev1.EnvVar{
 								{Name: "HF_HUB_ENABLE_HF_TRANSFER", Value: "1"},
-								{Name: "HF_XET_HIGH_PERFORMANCE", Value: "1"},
-								{Name: "HF_XET_NUM_CONCURRENT_RANGE_GETS", Value: "8"},
 							},
 							VolumeMounts: []corev1.VolumeMount{
 								{
@@ -4356,8 +4316,6 @@ func TestStorageInitializerUIDForIstioCNI(t *testing.T) {
 							Resources: resourceRequirement,
 							Env: []corev1.EnvVar{
 								{Name: "HF_HUB_ENABLE_HF_TRANSFER", Value: "1"},
-								{Name: "HF_XET_HIGH_PERFORMANCE", Value: "1"},
-								{Name: "HF_XET_NUM_CONCURRENT_RANGE_GETS", Value: "8"},
 							},
 							TerminationMessagePolicy: "FallbackToLogsOnError",
 							VolumeMounts: []corev1.VolumeMount{
@@ -4423,8 +4381,6 @@ func TestStorageInitializerUIDForIstioCNI(t *testing.T) {
 							Resources: resourceRequirement,
 							Env: []corev1.EnvVar{
 								{Name: "HF_HUB_ENABLE_HF_TRANSFER", Value: "1"},
-								{Name: "HF_XET_HIGH_PERFORMANCE", Value: "1"},
-								{Name: "HF_XET_NUM_CONCURRENT_RANGE_GETS", Value: "8"},
 							},
 							TerminationMessagePolicy: "FallbackToLogsOnError",
 							VolumeMounts: []corev1.VolumeMount{
@@ -4502,8 +4458,6 @@ func TestStorageInitializerUIDForIstioCNI(t *testing.T) {
 							Resources: resourceRequirement,
 							Env: []corev1.EnvVar{
 								{Name: "HF_HUB_ENABLE_HF_TRANSFER", Value: "1"},
-								{Name: "HF_XET_HIGH_PERFORMANCE", Value: "1"},
-								{Name: "HF_XET_NUM_CONCURRENT_RANGE_GETS", Value: "8"},
 							},
 							TerminationMessagePolicy: "FallbackToLogsOnError",
 							VolumeMounts: []corev1.VolumeMount{
@@ -4581,8 +4535,6 @@ func TestStorageInitializerUIDForIstioCNI(t *testing.T) {
 							Resources: resourceRequirement,
 							Env: []corev1.EnvVar{
 								{Name: "HF_HUB_ENABLE_HF_TRANSFER", Value: "1"},
-								{Name: "HF_XET_HIGH_PERFORMANCE", Value: "1"},
-								{Name: "HF_XET_NUM_CONCURRENT_RANGE_GETS", Value: "8"},
 							},
 							TerminationMessagePolicy: "FallbackToLogsOnError",
 							VolumeMounts: []corev1.VolumeMount{
@@ -4660,8 +4612,6 @@ func TestStorageInitializerUIDForIstioCNI(t *testing.T) {
 							Resources: resourceRequirement,
 							Env: []corev1.EnvVar{
 								{Name: "HF_HUB_ENABLE_HF_TRANSFER", Value: "1"},
-								{Name: "HF_XET_HIGH_PERFORMANCE", Value: "1"},
-								{Name: "HF_XET_NUM_CONCURRENT_RANGE_GETS", Value: "8"},
 							},
 							TerminationMessagePolicy: "FallbackToLogsOnError",
 							VolumeMounts: []corev1.VolumeMount{
@@ -4738,8 +4688,6 @@ func TestStorageInitializerUIDForIstioCNI(t *testing.T) {
 							Resources: resourceRequirement,
 							Env: []corev1.EnvVar{
 								{Name: "HF_HUB_ENABLE_HF_TRANSFER", Value: "1"},
-								{Name: "HF_XET_HIGH_PERFORMANCE", Value: "1"},
-								{Name: "HF_XET_NUM_CONCURRENT_RANGE_GETS", Value: "8"},
 							},
 							TerminationMessagePolicy: "FallbackToLogsOnError",
 							VolumeMounts: []corev1.VolumeMount{
@@ -4816,8 +4764,6 @@ func TestStorageInitializerUIDForIstioCNI(t *testing.T) {
 							Resources: resourceRequirement,
 							Env: []corev1.EnvVar{
 								{Name: "HF_HUB_ENABLE_HF_TRANSFER", Value: "1"},
-								{Name: "HF_XET_HIGH_PERFORMANCE", Value: "1"},
-								{Name: "HF_XET_NUM_CONCURRENT_RANGE_GETS", Value: "8"},
 							},
 							TerminationMessagePolicy: "FallbackToLogsOnError",
 							VolumeMounts: []corev1.VolumeMount{
@@ -4895,8 +4841,6 @@ func TestStorageInitializerUIDForIstioCNI(t *testing.T) {
 							Resources: resourceRequirement,
 							Env: []corev1.EnvVar{
 								{Name: "HF_HUB_ENABLE_HF_TRANSFER", Value: "1"},
-								{Name: "HF_XET_HIGH_PERFORMANCE", Value: "1"},
-								{Name: "HF_XET_NUM_CONCURRENT_RANGE_GETS", Value: "8"},
 							},
 							TerminationMessagePolicy: "FallbackToLogsOnError",
 							VolumeMounts: []corev1.VolumeMount{
@@ -5460,9 +5404,37 @@ func TestStorageInitializerWithUserDefinedHFEnvVars(t *testing.T) {
 				},
 			},
 			expectedEnvVars: []corev1.EnvVar{
-				{Name: "HF_HUB_ENABLE_HF_TRANSFER", Value: "0"},        // User value should be preserved
-				{Name: "HF_XET_HIGH_PERFORMANCE", Value: "1"},          // Default value added
-				{Name: "HF_XET_NUM_CONCURRENT_RANGE_GETS", Value: "8"}, // Default value added
+				{Name: "HF_HUB_ENABLE_HF_TRANSFER", Value: "0"}, // User value should be preserved
+			},
+		},
+		"UserOptsIntoHighPerformance": {
+			original: &corev1.Pod{
+				ObjectMeta: metav1.ObjectMeta{
+					Annotations: map[string]string{
+						constants.StorageInitializerSourceUriInternalAnnotationKey: "gs://foo",
+					},
+				},
+				Spec: corev1.PodSpec{
+					Containers: []corev1.Container{
+						{
+							Name: constants.InferenceServiceContainerName,
+						},
+					},
+				},
+			},
+			storageContainerSpec: &v1alpha1.StorageContainerSpec{
+				Container: corev1.Container{
+					Env: []corev1.EnvVar{
+						{
+							Name:  "HF_XET_HIGH_PERFORMANCE",
+							Value: "1", // User opts into high-performance mode
+						},
+					},
+				},
+			},
+			expectedEnvVars: []corev1.EnvVar{
+				{Name: "HF_XET_HIGH_PERFORMANCE", Value: "1"},   // User opt-in preserved
+				{Name: "HF_HUB_ENABLE_HF_TRANSFER", Value: "1"}, // Default value added
 			},
 		},
 		"UserDefinesHFEnvVarWithValueFrom": {
@@ -5505,8 +5477,6 @@ func TestStorageInitializerWithUserDefinedHFEnvVars(t *testing.T) {
 						},
 					},
 				},
-				{Name: "HF_XET_HIGH_PERFORMANCE", Value: "1"},
-				{Name: "HF_XET_NUM_CONCURRENT_RANGE_GETS", Value: "8"},
 			},
 		},
 		"NoUserDefinedHFEnvVars": {
@@ -5527,8 +5497,6 @@ func TestStorageInitializerWithUserDefinedHFEnvVars(t *testing.T) {
 			storageContainerSpec: nil,
 			expectedEnvVars: []corev1.EnvVar{
 				{Name: "HF_HUB_ENABLE_HF_TRANSFER", Value: "1"},
-				{Name: "HF_XET_HIGH_PERFORMANCE", Value: "1"},
-				{Name: "HF_XET_NUM_CONCURRENT_RANGE_GETS", Value: "8"},
 			},
 		},
 	}
@@ -5835,8 +5803,6 @@ func TestStorageInitializerWithUserDefinedCABundleEnvVars(t *testing.T) {
 			},
 			expectedEnvVars: []corev1.EnvVar{
 				{Name: "HF_HUB_ENABLE_HF_TRANSFER", Value: "1"},
-				{Name: "HF_XET_HIGH_PERFORMANCE", Value: "1"},
-				{Name: "HF_XET_NUM_CONCURRENT_RANGE_GETS", Value: "8"},
 				{Name: constants.CaBundleConfigMapNameEnvVarKey, Value: "user-custom-ca-bundle"},                            // User value preserved
 				{Name: constants.CaBundleVolumeMountPathEnvVarKey, Value: StorageInitializerDefaultCaBundleVolumeMountPath}, // Default added
 			},
@@ -5881,8 +5847,6 @@ func TestStorageInitializerWithUserDefinedCABundleEnvVars(t *testing.T) {
 			},
 			expectedEnvVars: []corev1.EnvVar{
 				{Name: "HF_HUB_ENABLE_HF_TRANSFER", Value: "1"},
-				{Name: "HF_XET_HIGH_PERFORMANCE", Value: "1"},
-				{Name: "HF_XET_NUM_CONCURRENT_RANGE_GETS", Value: "8"},
 				{Name: constants.CaBundleConfigMapNameEnvVarKey, Value: constants.DefaultGlobalCaBundleConfigMapName},
 				{
 					Name: constants.CaBundleVolumeMountPathEnvVarKey,

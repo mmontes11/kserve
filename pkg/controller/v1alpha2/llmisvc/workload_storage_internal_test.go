@@ -405,7 +405,7 @@ func hfEnvNames(c *corev1.Container) []string {
 	return names
 }
 
-var defaultHFEnvNames = []string{"HF_HUB_ENABLE_HF_TRANSFER", "HF_XET_HIGH_PERFORMANCE", "HF_XET_NUM_CONCURRENT_RANGE_GETS"}
+var defaultHFEnvNames = []string{"HF_HUB_ENABLE_HF_TRANSFER"}
 
 func TestAttachHfModelArtifactDefaultEnv(t *testing.T) {
 	t.Parallel()

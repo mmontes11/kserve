@@ -237,10 +237,8 @@ func TestAddDefaultHuggingFaceEnvVars(t *testing.T) {
 			initialEnvVars: []corev1.EnvVar{},
 			expectedEnvVars: []corev1.EnvVar{
 				{Name: "HF_HUB_ENABLE_HF_TRANSFER", Value: "1"},
-				{Name: "HF_XET_HIGH_PERFORMANCE", Value: "1"},
-				{Name: "HF_XET_NUM_CONCURRENT_RANGE_GETS", Value: "8"},
 			},
-			description: "Should add all HF env vars when container has no env vars",
+			description: "Should add the default HF env var when container has no env vars",
 		},
 		"UserOverridesOneEnvVar": {
 			initialEnvVars: []corev1.EnvVar{
@@ -248,10 +246,20 @@ func TestAddDefaultHuggingFaceEnvVars(t *testing.T) {
 			},
 			expectedEnvVars: []corev1.EnvVar{
 				{Name: "HF_HUB_ENABLE_HF_TRANSFER", Value: "0"}, // User value preserved
+			},
+			description: "Should preserve user-defined HF env var and add nothing else",
+		},
+		"UserOptsIntoHighPerformance": {
+			initialEnvVars: []corev1.EnvVar{
 				{Name: "HF_XET_HIGH_PERFORMANCE", Value: "1"},
 				{Name: "HF_XET_NUM_CONCURRENT_RANGE_GETS", Value: "8"},
 			},
-			description: "Should preserve user-defined HF env var and add missing ones",
+			expectedEnvVars: []corev1.EnvVar{
+				{Name: "HF_XET_HIGH_PERFORMANCE", Value: "1"}, // User opt-in preserved
+				{Name: "HF_XET_NUM_CONCURRENT_RANGE_GETS", Value: "8"},
+				{Name: "HF_HUB_ENABLE_HF_TRANSFER", Value: "1"},
+			},
+			description: "Should preserve user opt-in into XET high-performance mode and add the missing default",
 		},
 		"UserDefinesWithValueFrom": {
 			initialEnvVars: []corev1.EnvVar{
@@ -275,8 +283,6 @@ func TestAddDefaultHuggingFaceEnvVars(t *testing.T) {
 						},
 					},
 				},
-				{Name: "HF_XET_HIGH_PERFORMANCE", Value: "1"},
-				{Name: "HF_XET_NUM_CONCURRENT_RANGE_GETS", Value: "8"},
 			},
 			description: "Should preserve user-defined HF env var with ValueFrom",
 		},
@@ -301,10 +307,8 @@ func TestAddDefaultHuggingFaceEnvVars(t *testing.T) {
 			expectedEnvVars: []corev1.EnvVar{
 				{Name: "SOME_OTHER_VAR", Value: "value"},
 				{Name: "HF_HUB_ENABLE_HF_TRANSFER", Value: "0"},
-				{Name: "HF_XET_HIGH_PERFORMANCE", Value: "1"},
-				{Name: "HF_XET_NUM_CONCURRENT_RANGE_GETS", Value: "8"},
 			},
-			description: "Should add missing HF env vars without affecting other env vars",
+			description: "Should not add any HF env vars without affecting other env vars",
 		},
 	}
 
